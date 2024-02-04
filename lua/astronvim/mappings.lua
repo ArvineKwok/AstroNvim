@@ -17,10 +17,12 @@ local sections = {
   g = { desc = get_icon("Git", 1, true) .. "Git" },
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+  v = { desc = "Virtual Environment" },
 }
 
 -- Normal --
 -- Standard Operations
+maps.n["<leader>v"] = sections.v
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
 maps.n["<leader>w"] = { "<cmd>w<cr>", desc = "Save" }
