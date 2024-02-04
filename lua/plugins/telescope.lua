@@ -2,6 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable "make" == 1, build = "make" },
+    { "jonarrien/telescope-cmdline.nvim" },
   },
   cmd = "Telescope",
   opts = function()
@@ -33,5 +34,12 @@ return {
       },
     }
   end,
-  config = require "plugins.configs.telescope",
+  config = function(_, opts)
+    require "plugins.configs.telescope"
+    require("telescope").setup(opts)
+    require("telescope").load_extension "cmdline"
+  end,
+  keys = {
+    { "<leader><leader>", "<cmd>Telescope cmdline<cr>", desc = "Cmdline" },
+  },
 }
