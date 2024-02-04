@@ -113,6 +113,9 @@ return {
           { name = "buffer", priority = 500 },
           { name = "path", priority = 250 },
         },
+        experimental = {
+          ghost_text = true,
+        },
       }
     end,
   },
