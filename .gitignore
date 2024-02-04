@@ -47,3 +47,7 @@ tags
 
 # JetBrains
 .idea
+
+__pycache__
+test.*
+lazy-lock.json
