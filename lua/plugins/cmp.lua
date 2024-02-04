@@ -20,6 +20,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-emoji", -- add cmp source as dependency of cmp
     },
     event = "InsertEnter",
     opts = function()
@@ -108,6 +109,7 @@ return {
         sources = cmp.config.sources {
           { name = "nvim_lsp", priority = 1000 },
           { name = "luasnip", priority = 750 },
+          { name = "emoji", priority = 700 },
           { name = "buffer", priority = 500 },
           { name = "path", priority = 250 },
         },
