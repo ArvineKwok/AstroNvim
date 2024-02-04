@@ -4,4 +4,5 @@ return function()
       { name = "dap" },
     },
   })
+  require("nvim-dap-virtual-text").setup()
 end
