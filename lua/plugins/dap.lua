@@ -18,6 +18,9 @@ return {
       dependencies = { "nvim-cmp" },
       config = require "plugins.configs.cmp-dap",
     },
+    { "theHamsta/nvim-dap-virtual-text" },
+    { "mfussenegger/nvim-dap-python" },
+    { "nvim-telescope/telescope-dap.nvim" },
   },
   event = "User AstroFile",
 }
