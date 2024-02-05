@@ -26,8 +26,8 @@ return {
       },
     },
     keys = {
-      -- { "<leader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
@@ -95,35 +95,36 @@ return {
       -- refer to the configuration section below
     },
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     indent = {
-  --       char = "│",
-  --       tab_char = "│",
-  --     },
-  --     scope = { enabled = true },
-  --     exclude = {
-  --       filetypes = {
-  --         "help",
-  --         "alpha",
-  --         "dashboard",
-  --         "neo-tree",
-  --         "Trouble",
-  --         "trouble",
-  --         "lazy",
-  --         "mason",
-  --         "notify",
-  --         "toggleterm",
-  --         "lazyterm",
-  --       },
-  --     },
-  --   },
-  --   main = "ibl",
-  -- },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    opts = {
+      indent = {
+        char = "│",
+        tab_char = "│",
+      },
+      scope = { enabled = true },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+      },
+    },
+    main = "ibl",
+  },
   { "echasnovski/mini.animate", event = "VeryLazy", config = true },
   { "echasnovski/mini.bracketed", event = "VeryLazy", config = true },
+  -- TODO: key map conflict
   -- [[
   -- Target	Mappings	Lua function
   -- Buffer	[B [b ]b ]B	MiniBracketed.buffer()
@@ -166,5 +167,14 @@ return {
       enable_check_bracket_line = true,
     },
     event = "VeryLazy",
+  },
+  {
+    "abcdefg233/rainbowcursor.nvim",
+    cmd = { "RainbowCursor" },
+    config = true,
+    event = "InsertEnter",
+    dependencies = {
+      "abcdefg233/hcutil.nvim",
+    },
   },
 }

@@ -18,10 +18,23 @@ local sections = {
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
   v = { desc = "Virtual Environment" },
+  x = { desc = "TODO LIST" },
 }
 
 -- Normal --
+-- Move Lines
+maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
+maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
+maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
+maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
+maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
+maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
+maps.n["<leader>x"] = sections.x
 -- Standard Operations
+-- Increment/descrement
+maps.n["+"] = { "<C-a>", desc = "Increment" }
+maps.n["-"] = { "<C-x>", desc = "Descrement" }
+maps.n["<C-a>"] = { "gg<S-v>G", desc = "Select all" }
 maps.n["<leader>v"] = sections.v
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
@@ -428,7 +441,7 @@ end
 
 -- Stay in indent mode
 maps.v["<S-Tab>"] = { "<gv", desc = "Unindent line" }
-maps.v["<Tab>"] = { ">gv", desc = "Indent line" }
+maps.v["<Tab>"] = { ">gv", desc = "Unindent line" }
 
 -- Improved Terminal Navigation
 maps.t["<C-h>"] = { "<cmd>wincmd h<cr>", desc = "Terminal left window navigation" }

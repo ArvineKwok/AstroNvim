@@ -381,7 +381,7 @@ autocmd("InsertLeave", {
 })
 
 -- Fix concellevel for json files
-autocmd(("FileType"), {
+autocmd("FileType", {
   pattern = { "json", "jsonc" },
   callback = function()
     vim.wo.spell = false
