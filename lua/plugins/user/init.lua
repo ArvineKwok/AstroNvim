@@ -40,6 +40,7 @@ return {
   {
     -- 长按j，k加速滑动
     "rhysd/accelerated-jk",
+    event = "VeryLazy",
     keys = {
       { "j", "<Plug>(accelerated_jk_gj)" },
       { "k", "<Plug>(accelerated_jk_gk)" },
@@ -175,6 +176,30 @@ return {
     event = "InsertEnter",
     dependencies = {
       "abcdefg233/hcutil.nvim",
+    },
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("inc_rename").setup {
+        input_buffer_type = "dressing",
+      }
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
     },
   },
 }

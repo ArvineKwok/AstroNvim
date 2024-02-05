@@ -22,6 +22,9 @@ local sections = {
 }
 
 -- Normal --
+-- inc rename
+maps.n["<leader>r"] = { desc = "Rename" }
+maps.n["<leader>rn"] = { function() return ":IncRename " .. vim.fn.expand "<cword>" end, expr = true, desc = "Rename" }
 -- Move Lines
 maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
 maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }

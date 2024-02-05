@@ -71,7 +71,14 @@ return {
     lazy = true,
     init = function() require("astronvim.utils").load_plugin_with_func("dressing.nvim", vim.ui, { "input", "select" }) end,
     opts = {
-      input = { default_prompt = "➤ " },
+      input = {
+        default_prompt = "➤ ",
+        override = function(conf)
+          conf.col = -1
+          conf.row = 0
+          return conf
+        end,
+      },
       select = { backend = { "telescope", "builtin" } },
     },
   },
