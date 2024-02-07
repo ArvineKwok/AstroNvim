@@ -18,26 +18,34 @@ local sections = {
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
   v = { desc = "Virtual Environment" },
-  x = { desc = "TODO LIST" },
+  x = { desc = "Trouble" },
+  r = { desc = "Refactoring" },
+  -- b = { desc = "Boxes" },
 }
 
 -- Normal --
--- inc rename
-maps.n["<leader>r"] = { desc = "Rename" }
-maps.n["<leader>rn"] = { function() return ":IncRename " .. vim.fn.expand "<cword>" end, expr = true, desc = "Rename" }
+maps.n["<leader>r"] = sections.r
+-- comment-box
+-- maps.n["<leader>c"] = sections.c
+-- maps.n["<leader>cb"] = { "<cmd>CBccbox<cr>", "Box Title" }
+-- maps.n["<leader>ct"] = { "<cmd>CBllline<cr>", "Titled Line" }
+-- maps.n["<leader>cl"] = { "<cmd>CBline<cr>", "Simple Line" }
+-- maps.n["<leader>cm"] = { "<cmd>CBllbox14<cr>", "Marked" }
+-- maps.n["<leader>cd"] = { "<cmd>CBd<cr>", "Remove a box" }
+
 -- Move Lines
-maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
-maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
-maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
-maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
-maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
-maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
+-- maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
+-- maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
+-- maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
+-- maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
+-- maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
+-- maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
 maps.n["<leader>x"] = sections.x
 -- Standard Operations
 -- Increment/descrement
-maps.n["+"] = { "<C-a>", desc = "Increment" }
-maps.n["-"] = { "<C-x>", desc = "Descrement" }
-maps.n["<C-a>"] = { "gg<S-v>G", desc = "Select all" }
+-- maps.n["+"] = { "<C-a>", desc = "Increment" }
+-- maps.n["-"] = { "<C-x>", desc = "Descrement" }
+-- maps.n["<C-a>"] = { "gg<S-v>G", desc = "Select all" }
 maps.n["<leader>v"] = sections.v
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
