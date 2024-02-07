@@ -125,7 +125,7 @@ return {
   --   main = "ibl",
   -- },
   -- { "echasnovski/mini.animate", event = "VeryLazy", config = true },
-  { "echasnovski/mini.bracketed", event = "User AstroFile", config = true },
+  -- { "echasnovski/mini.bracketed", event = "User AstroFile", config = true },
   -- TODO: key map conflict
   -- [[
   -- Target	Mappings	Lua function
