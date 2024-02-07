@@ -3,66 +3,66 @@ return {
     "mechatroner/rainbow_csv",
     config = function() end,
   },
-  {
-    "folke/flash.nvim",
-    opts = {
-      incremental = true,
-      exclude = {
-        "notify",
-        "cmp_menu",
-        "noice",
-        "flash_prompt",
-        "neo-tree",
-        function(win)
-          -- exclude non-focusable windows
-          return not vim.api.nvim_win_get_config(win).focusable
-        end,
-      },
-      search = {
-        forward = true,
-        multi_window = false,
-        wrap = false,
-        incremental = true,
-      },
-    },
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
+  -- {
+  --   "folke/flash.nvim",
+  --   opts = {
+  --     incremental = true,
+  --     exclude = {
+  --       "notify",
+  --       "cmp_menu",
+  --       "noice",
+  --       "flash_prompt",
+  --       "neo-tree",
+  --       function(win)
+  --         -- exclude non-focusable windows
+  --         return not vim.api.nvim_win_get_config(win).focusable
+  --       end,
+  --     },
+  --     search = {
+  --       forward = true,
+  --       multi_window = false,
+  --       wrap = false,
+  --       incremental = true,
+  --     },
+  --   },
+  --   keys = {
+  --     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+  --     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+  --     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+  --     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  --     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  --   },
+  -- },
   {
     "nvim-telescope/telescope-file-browser.nvim",
     config = function() require("telescope").load_extension "file_browser" end,
   },
-  {
-    -- 长按j，k加速滑动
-    "rhysd/accelerated-jk",
-    event = "VeryLazy",
-    keys = {
-      { "j", "<Plug>(accelerated_jk_gj)" },
-      { "k", "<Plug>(accelerated_jk_gk)" },
-    },
-  },
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-    opts = {
-      dap_enabled = true,
-      -- Your options go here
-      -- name = "venv",
-      -- auto_refresh = false
-    },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
-    },
-  },
+  -- {
+  --   -- 长按j，k加速滑动
+  --   "rhysd/accelerated-jk",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "j", "<Plug>(accelerated_jk_gj)" },
+  --     { "k", "<Plug>(accelerated_jk_gk)" },
+  --   },
+  -- },
+  -- {
+  --   "linux-cultist/venv-selector.nvim",
+  --   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+  --   opts = {
+  --     dap_enabled = true,
+  --     -- Your options go here
+  --     -- name = "venv",
+  --     -- auto_refresh = false
+  --   },
+  --   event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+  --   keys = {
+  --     -- Keymap to open VenvSelector to pick a venv.
+  --     { "<leader>vs", "<cmd>VenvSelect<cr>" },
+  --     -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+  --     { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+  --   },
+  -- },
   {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
@@ -74,28 +74,28 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "VeryLazy",
+    cmd = { "TodoTrouble", "TodoTelescope", "TodoLocList", "TodoQuickFix" },
+    event = "User AstroFile",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = {},
-    keys = {
-      { "]c", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[c", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>xs", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>xS", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    },
+    -- keys = {
+    --   { "]c", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+    --   { "[c", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+    --   { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+    --   { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+    --   { "<leader>xs", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+    --   { "<leader>xS", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    -- },
   },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
+  -- {
+  --   "folke/trouble.nvim",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   opts = {
+  --     -- your configuration comes here
+  --     -- or leave it empty to use the default settings
+  --     -- refer to the configuration section below
+  --   },
+  -- },
   -- {
   --   "lukas-reineke/indent-blankline.nvim",
   --   event = "VeryLazy",
@@ -123,8 +123,8 @@ return {
   --   },
   --   main = "ibl",
   -- },
-  { "echasnovski/mini.animate", event = "VeryLazy", config = true },
-  { "echasnovski/mini.bracketed", event = "VeryLazy", config = true },
+  -- { "echasnovski/mini.animate", event = "VeryLazy", config = true },
+  { "echasnovski/mini.bracketed", event = "User AstroFile", config = true },
   -- TODO: key map conflict
   -- [[
   -- Target	Mappings	Lua function
@@ -144,7 +144,6 @@ return {
   -- Yank selection replacing latest put region	[Y [y ]y ]Y	MiniBracketed.yank()
   -- ]]
   { "echasnovski/mini.cursorword", event = "VeryLazy", config = true },
-  { "echasnovski/mini.indentscope", event = "VeryLazy", config = true },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -171,15 +170,15 @@ return {
       "abcdefg233/hcutil.nvim",
     },
   },
-  {
-    "smjonas/inc-rename.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("inc_rename").setup {
-        input_buffer_type = "dressing",
-      }
-    end,
-  },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("inc_rename").setup {
+  --       input_buffer_type = "dressing",
+  --     }
+  --   end,
+  -- },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -195,91 +194,14 @@ return {
       "rcarriga/nvim-notify",
     },
   },
+  {
+    "VidocqH/lsp-lens.nvim",
+    event = "LspAttach",
+    config = {},
+  },
   -- {
-  --   "mfussenegger/nvim-lint",
+  --   "LudoPinelli/comment-box.nvim",
   --   event = "User AstroFile",
-  --   opts = {
-  --     -- Event to trigger linters
-  --     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
-  --     linters_by_ft = {
-  --       python = { "ruff" },
-  --       -- Use the "*" filetype to run linters on all filetypes.
-  --       -- ['*'] = { 'global linter' },
-  --       -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
-  --       -- ['_'] = { 'fallback linter' },
-  --     },
-  --     -- LazyVim extension to easily override linter options
-  --     -- or add custom linters.
-  --     ---@type table<string,table>
-  --     linters = {
-  --       -- -- Example of using selene only when a selene.toml file is present
-  --       -- selene = {
-  --       --   -- `condition` is another LazyVim extension that allows you to
-  --       --   -- dynamically enable/disable linters based on the context.
-  --       --   condition = function(ctx)
-  --       --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
-  --       --   end,
-  --       -- },
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     -- local Util = require("lazyvim.util")
-  --
-  --     local M = {}
-  --
-  --     local lint = require "lint"
-  --     for name, linter in pairs(opts.linters) do
-  --       if type(linter) == "table" and type(lint.linters[name]) == "table" then
-  --         lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
-  --       else
-  --         lint.linters[name] = linter
-  --       end
-  --     end
-  --     lint.linters_by_ft = opts.linters_by_ft
-  --
-  --     function M.debounce(ms, fn)
-  --       local timer = vim.loop.new_timer()
-  --       return function(...)
-  --         local argv = { ... }
-  --         timer:start(ms, 0, function()
-  --           timer:stop()
-  --           vim.schedule_wrap(fn)(unpack(argv))
-  --         end)
-  --       end
-  --     end
-  --
-  --     function M.lint()
-  --       -- Use nvim-lint's logic first:
-  --       -- * checks if linters exist for the full filetype first
-  --       -- * otherwise will split filetype by "." and add all those linters
-  --       -- * this differs from conform.nvim which only uses the first filetype that has a formatter
-  --       local names = lint._resolve_linter_by_ft(vim.bo.filetype)
-  --
-  --       -- Add fallback linters.
-  --       if #names == 0 then vim.list_extend(names, lint.linters_by_ft["_"] or {}) end
-  --
-  --       -- Add global linters.
-  --       vim.list_extend(names, lint.linters_by_ft["*"] or {})
-  --
-  --       -- Filter out linters that don't exist or don't match the condition.
-  --       local ctx = { filename = vim.api.nvim_buf_get_name(0) }
-  --       ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
-  --       names = vim.tbl_filter(function(name)
-  --         local linter = lint.linters[name]
-  --         -- if not linter then
-  --         --   Util.warn("Linter not found: " .. name, { title = "nvim-lint" })
-  --         -- end
-  --         return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
-  --       end, names)
-  --
-  --       -- Run linters.
-  --       if #names > 0 then lint.try_lint(names) end
-  --     end
-  --
-  --     vim.api.nvim_create_autocmd(opts.events, {
-  --       group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-  --       callback = M.debounce(100, M.lint),
-  --     })
-  --   end,
+  --   opts = {},
   -- },
 }
