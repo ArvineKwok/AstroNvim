@@ -133,8 +133,9 @@ if is_available "heirline.nvim" then
 end
 
 -- Navigate tabs
-maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
-maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
+maps.n["<tab>"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
+maps.n["<s-tab>"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
+maps.n["te"] = { function() vim.cmd.tabedit() end, desc = "New tab" }
 
 -- Alpha
 if is_available "alpha-nvim" then
@@ -161,7 +162,6 @@ if is_available "Comment.nvim" then
     desc = "Toggle comment for selection",
   }
 end
-
 -- GitSigns
 if is_available "gitsigns.nvim" then
   maps.n["<leader>g"] = sections.g
