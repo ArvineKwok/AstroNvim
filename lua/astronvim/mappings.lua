@@ -33,19 +33,7 @@ maps.n["<leader>r"] = sections.r
 -- maps.n["<leader>cm"] = { "<cmd>CBllbox14<cr>", "Marked" }
 -- maps.n["<leader>cd"] = { "<cmd>CBd<cr>", "Remove a box" }
 
--- Move Lines
--- maps.n["<A-j>"] = { "<cmd>m .+1<cr>==", desc = "Move down" }
--- maps.n["<A-k>"] = { "<cmd>m .-2<cr>==", desc = "Move up" }
--- maps.i["<A-j>"] = { "<esc><cmd>m .+1<cr>==gi", desc = "Move down" }
--- maps.i["<A-k>"] = { "<esc><cmd>m .-2<cr>==gi", desc = "Move up" }
--- maps.v["<A-j>"] = { ":m '>+1<cr>gv=gv", desc = "Move down" }
--- maps.v["<A-k>"] = { ":m '<-2<cr>gv=gv", desc = "Move up" }
 maps.n["<leader>x"] = sections.x
--- Standard Operations
--- Increment/descrement
--- maps.n["+"] = { "<C-a>", desc = "Increment" }
--- maps.n["-"] = { "<C-x>", desc = "Descrement" }
--- maps.n["<C-a>"] = { "gg<S-v>G", desc = "Select all" }
 maps.n["<leader>v"] = sections.v
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
