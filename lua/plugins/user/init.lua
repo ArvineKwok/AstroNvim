@@ -2,6 +2,7 @@ return {
   {
     "mechatroner/rainbow_csv",
     config = function() end,
+    event = "BufEnter",
   },
   -- {
   --   "folke/flash.nvim",
