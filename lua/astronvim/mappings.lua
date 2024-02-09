@@ -18,7 +18,7 @@ local sections = {
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
   v = { desc = "Virtual Environment" },
-  x = { desc = "Trouble" },
+  x = { desc = "Trouble \\ Todo" },
   r = { desc = "Refactoring" },
   -- b = { desc = "Boxes" },
 }
