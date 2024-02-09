@@ -373,3 +373,18 @@ cmd("AstroRollback", function() require("astronvim.utils.updater").rollback() en
 cmd("AstroUpdate", function() require("astronvim.utils.updater").update() end, { desc = "Update AstroNvim" })
 cmd("AstroVersion", function() require("astronvim.utils.updater").version() end, { desc = "Check AstroNvim Version" })
 cmd("AstroReload", function() require("astronvim.utils").reload() end, { desc = "Reload AstroNvim (Experimental)" })
+
+-- Trun off paste mode when leaving insert
+autocmd("InsertLeave", {
+  pattern = "*",
+  command = "set nopaste",
+})
+
+-- Fix concellevel for json files
+autocmd("FileType", {
+  pattern = { "json", "jsonc" },
+  callback = function()
+    vim.wo.spell = false
+    vim.wo.conceallevel = 0
+  end,
+})

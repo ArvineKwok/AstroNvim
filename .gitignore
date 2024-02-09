@@ -6,7 +6,7 @@ colors
 docs
 ftplugin
 ginit.vim
-lua/user
+# lua/user
 neoconf.json
 plugin
 queries
@@ -47,3 +47,9 @@ tags
 
 # JetBrains
 .idea
+
+__pycache__
+test.*
+lazy-lock.json
+
+test.*

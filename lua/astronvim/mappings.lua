@@ -17,10 +17,24 @@ local sections = {
   g = { desc = get_icon("Git", 1, true) .. "Git" },
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+  v = { desc = "Virtual Environment" },
+  x = { desc = "Trouble \\ Todo" },
+  r = { desc = "Refactoring" },
+  -- b = { desc = "Boxes" },
 }
 
 -- Normal --
--- Standard Operations
+maps.n["<leader>r"] = sections.r
+-- comment-box
+-- maps.n["<leader>c"] = sections.c
+-- maps.n["<leader>cb"] = { "<cmd>CBccbox<cr>", "Box Title" }
+-- maps.n["<leader>ct"] = { "<cmd>CBllline<cr>", "Titled Line" }
+-- maps.n["<leader>cl"] = { "<cmd>CBline<cr>", "Simple Line" }
+-- maps.n["<leader>cm"] = { "<cmd>CBllbox14<cr>", "Marked" }
+-- maps.n["<leader>cd"] = { "<cmd>CBd<cr>", "Remove a box" }
+
+maps.n["<leader>x"] = sections.x
+maps.n["<leader>v"] = sections.v
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
 maps.n["<leader>w"] = { "<cmd>w<cr>", desc = "Save" }
@@ -51,9 +65,9 @@ maps.n["<leader>pl"] = { "<cmd>AstroChangelog<cr>", desc = "AstroNvim Changelog"
 -- Manage Buffers
 maps.n["<leader>c"] = { function() require("astronvim.utils.buffer").close() end, desc = "Close buffer" }
 maps.n["<leader>C"] = { function() require("astronvim.utils.buffer").close(0, true) end, desc = "Force close buffer" }
-maps.n["]b"] =
+maps.n["<S-l>"] =
   { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" }
-maps.n["[b"] = {
+maps.n["<S-h>"] = {
   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
   desc = "Previous buffer",
 }
@@ -119,8 +133,9 @@ if is_available "heirline.nvim" then
 end
 
 -- Navigate tabs
-maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
-maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
+maps.n["<tab>"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
+maps.n["<s-tab>"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
+maps.n["te"] = { function() vim.cmd.tabedit() end, desc = "New tab" }
 
 -- Alpha
 if is_available "alpha-nvim" then
@@ -278,6 +293,7 @@ if is_available "telescope.nvim" then
     desc = "Find AstroNvim config files",
   }
   maps.n["<leader>fb"] = { function() require("telescope.builtin").buffers() end, desc = "Find buffers" }
+  maps.n["<leader>fB"] = { "<cmd>Telescope file_browser path=%:p:h=%:p:h<cr>", desc = "File Browser" }
   maps.n["<leader>fc"] = { function() require("telescope.builtin").grep_string() end, desc = "Find word under cursor" }
   maps.n["<leader>fC"] = { function() require("telescope.builtin").commands() end, desc = "Find commands" }
   maps.n["<leader>ff"] = { function() require("telescope.builtin").find_files() end, desc = "Find files" }
